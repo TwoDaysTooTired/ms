@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Material
 from .models import Course
 from .models import Grade
-from sim.models import StudentInfo
+from .models import StudentInfo
 # Register your models here.
 class MaterialAdmin(admin.ModelAdmin):
     fields = ['SerialNum','Name','Type','InventoryLimitNum','Price','Note']
@@ -28,13 +28,15 @@ class GradeAdmin(admin.ModelAdmin):
     list_per_page = 15
 
 class StudentInfoAdmin(admin.ModelAdmin):
-    fields = ['SerialNum', 'Name', 'LimitNum', 'Courses', 'Note']
-    list_display = ['id', 'Name', 'SerialNum', 'studentNum', 'Note']
+    fields = ['SerialNum', 'Name']
+    list_display = ['id', 'Name', 'SerialNum', 'Gender', 'Age',"electiveCoursesNum","Email","Tel","Grade","Note"]
     list_display_links = ['Name']
-    search_fields = ['Name', 'SerialNum']
+    search_fields = ['Name', 'SerialNum','Email','Tel']
+    list_filter = ['Gender','Age','Grade']
     list_per_page = 15
 
 
 admin.site.register(Material,MaterialAdmin)
 admin.site.register(Course,CourseAdmin)
 admin.site.register(Grade,GradeAdmin)
+admin.site.register(StudentInfo,StudentInfoAdmin)
