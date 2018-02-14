@@ -3,6 +3,8 @@ from .models import Material
 from .models import Course
 from .models import Grade
 from .models import StudentInfo
+from django.contrib.auth.models import User
+from sim.models import StudentUser
 # Register your models here.
 class MaterialAdmin(admin.ModelAdmin):
     fields = ['SerialNum','Name','Type','InventoryLimitNum','Price','Note']
@@ -34,6 +36,14 @@ class StudentInfoAdmin(admin.ModelAdmin):
     search_fields = ['Name', 'SerialNum','Email','Tel']
     list_filter = ['Gender','Age','Grade']
     list_per_page = 15
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        StudentUser.create_studentuser(obj)
+
+
+
+
 
 
 admin.site.register(Material,MaterialAdmin)

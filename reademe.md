@@ -36,7 +36,7 @@
 
 # 主要内容
 ## 管理员
-1.登陆
+1.管理登陆
 2.录入学生信息，修改学生信息，删除学生信息
 3.录入材料信息，修改，删除
 4.录入课程信息，修改，删除
@@ -52,10 +52,13 @@
     Material(oto) num 
     record
     id(privekey) grade(oto) MaterialAlloc(mtm) data note allnum
+    
 8。入库记录，分配记录
 
 ## 学生注册选课
 1.注册
+    管理系统User 创建studentInfo时创建用户，默认密码123456 ，用户名为学号
+    
 2.登陆
 3.选课
 

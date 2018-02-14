@@ -17,8 +17,15 @@ from sim import views
 from django.contrib.auth.views import login,logout_then_login
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from sim.views import StudentUserLoginView
+from sim.views import loginSuccess
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('student/', login, {'template_name','manage/index.html'}),
+    path('slogin/',StudentUserLoginView.as_view()),
+    path('login/', login ,{'template_name': 'sim/login.html'}),
+    path('login/success/', loginSuccess ),
+   ## path('accounts/', include('django.contrib.auth.urls')),
+
 ]
