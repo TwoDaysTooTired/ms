@@ -1,10 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+{% if not isEnough %}
+    <form action="/admin/" method="post">{% csrf_token %}
+{% else %}
+    <form action="/materialAlloc/alloc/?gid={{ grade.id }}" method="post">{% csrf_token %}
+{% endif %}
+    <table style="width:auto">
+    {% if material_list|length > 0 %}
+    <caption class="section">
+        <label style="font-size: 22px;color: green">Base Cources Info</label>
+    </caption>
+        <tr class = "model-Materials }}">
+        <th scope="row">Material SerialNum</th>
+        <th scope="row">Material Name</th>
+        <th scope="row">InventoryNum</th>
+        <th scope="row">Price</th>
+        </tr>
+    {% for material in material_list %}
+         {% if material.InventoryNum < grade.studentNum %}
+             {{ notEnough|add:1 }}
+        <tr class="model-material" style="color: red">
+            <td scope="row">{{ material.SerialNum }}</td>
+            <td scope="row">{{ material.Name }}</td>
+            <td scope="row">{{ material.InventoryNum }}</td>
+            <td scope="row">{{ material.Price }}</td>
+        </tr>
+         {% else %}
+             <tr class="model-material" >
+            <td scope="row">{{ material.SerialNum }}</td>
+            <td scope="row">{{ material.Name }}</td>
+
+            <td scope="row">{{ material.InventoryNum }}</td>
+
+            <td scope="row">{{ material.Price }}</td>
+        </tr>
+         {% endif %}
+    {% endfor %}
+    {% else %}
+        <label style="font-size: 22px;color: green">There no base Cource</label>
+    {% endif %}
+    {% if not isEnough  %}
+    <label style="font-size: 30px;color: red">Lack of material </label>
+    {% endif %}
+    <tr align="center">
+        <td scope="row" colspan="3">
+            {% if not isEnough %}
+                <p class="submit" style="color: gray"><input type="submit" name="submit" id="submit" class="button-primary" value="return"  /></p>
+            {% else %}
+                <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="alloc"  /></p>
+            {% endif %}
+
+        </td>
+    </tr>
+    </table>
+    <h1 style="font-size: 22px;color: green" >there are {{ grade.studentNum }} students here.</h1>
+
+</form>
+</div>
+{% endblock %}

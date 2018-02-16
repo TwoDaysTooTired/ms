@@ -2,7 +2,13 @@
 {% load i18n static %}
 {% block branding %}
     {% if student %}
-<h1 id="site-name"><a href="">{{student.SerialNum}},{{ student.Name }}</a></h1>
+<h1 id="site-name">
+
+    <a href="/login/success/" style="width:50%">{{student.SerialNum}},{{ student.Name }}</a>
+{#    <a href="/login/success/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Main</a>#}
+    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Logout</a>
+
+</h1>
     {% endif %}
 {% endblock %}
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
@@ -24,8 +30,11 @@
     <caption>
             <a href="" class="section" title="{% blocktrans with name=student.Name %}{{ name }} {% endblocktrans %}"> 操 作</a>
     </caption>
+    <tr class="model-{{ student.object_name|lower }}">
+                <th scope="row"><a href="{{ student.actionDetail}}"> 个人资料 </a></th>
+     </tr>
      <tr class="model-{{ student.object_name|lower }}">
-                <th scope="row"><a href="{{ student.admin_url}}"> 修改信息 </a></th>
+                <th scope="row"><a href="{{ student.actionChangeInfo}}"> 修改信息 </a></th>
      </tr>
      <tr class="model-{{ student.object_name|lower }}">
                 <th scope="row"><a href="{{ student.actionChangeGrade}}"> 选课 </a></th>

@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% block branding %}
+    {% if student %}
+<h1 id="site-name">
+
+    <a href="/login/success/" style="width:50%">{{student.SerialNum}},{{ student.Name }}</a>
+{#    <a href="/login/success/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Main</a>#}
+    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Logout</a>
+
+</h1>
+    {% endif %}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+<h3>密码修改成功</h3>
+        <p class="submit"><a href="/login/"><input type='button' name="submit" id="submit" class="button-primary"  value="return"></input></a></p>
+</div>
+{% endblock %}
+
+

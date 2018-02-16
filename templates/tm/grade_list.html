@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+{% if object_list  %}
+    <table>
+    <caption>All Materials</caption>
+          <tr class="model-{{ model.object_name|lower }}">
+            <th scope="row">Id </th>
+            <th scope="row">Name</th>
+            <th scope="row">Student of Num</th>
+            <th scope="row">Allocated Num of Materials</th>
+            <th scope="row">Total of Material Num</th>
+              <th scope="row">isAllocateAll</th>
+        </tr>
+    {% for grade in object_list  %}
+        <tr class="model-{{ model.object_name|lower }}">
+            <td scope="row">{{ grade.id }}</td>
+            <td scope="row">{{ grade.Name }}</td>
+            <td scope="row">{{ grade.studentNum }}</td>
+            <td scope="row">{{ grade.hasAllocNum }}</td>
+            <td scope="row">{{ grade.fullNum }}</td>
+            <td scope="row">{{ grade.isFullAlloc }}</td>
+            {% if not grade.isFullAlloc %}
+            <td><a href="/materialAlloc/alloc/?gid={{ grade.id }}" class="addlink">{% trans 'Alloc' %}</a></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </table>
+{% endif %}
+</div>
+{% endblock %}

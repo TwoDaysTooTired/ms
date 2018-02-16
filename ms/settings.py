@@ -120,10 +120,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# 较早版本的 Django 可以尝试改为'zh-CN',具体可查看
+# “python/site-packages/django/conf/locale/”中的语言名称
+LANGUAGE_CODE = 'zh-Hans'
 
+# Windows环境中此项的时区必须和系统一致，设置为 Asia/Shanghai。
+# 另外此项设置如果保持 UTC 有可能导致 Django 时间和本地时间不同的情况。
+TIME_ZONE = 'Asia/Shanghai'
+
+#TIME_ZONE = 'UTC'
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+)
 USE_I18N = True
 
 USE_L10N = True

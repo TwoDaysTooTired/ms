@@ -1,10 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% block branding %}
+    {% if student %}
+<h1 id="site-name">
+
+    <a href="/login/success/" style="width:50%">{{student.SerialNum}},{{ student.Name }}</a>
+{#    <a href="/login/success/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Main</a>#}
+    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Logout</a>
+
+</h1>
+    {% endif %}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+<div class="student module">
+
+
+<table width="50%"  style="align-items: left">
+<style>
+    .content{width: 450px;
+        overflow: hidden;}
+</style>
+    <caption class="section">详细资料</caption>
+    <tr  class="model-{{ student.object_name|lower }}" align="left">
+        <th scope="row">  <label >姓名：</label></th>
+         <th scope="row" class="content">  <label >{{ student.Name }}</label></th>
+    </tr>
+    <tr  class="model-{{ student.object_name|lower }}">
+        <th scope="row"><label >学号:</label></th>
+        <th scope="row" class="content">  <label>{{ student.SerialNum }}</label></th>
+    </tr>
+    <tr class="model-{{  student.object_name|lower }}">
+        <th scope="row"><label >班级：</label></th>
+        <th scope="row" class="content"> <label >{{ student.Grade}}</label></th>
+    </tr>
+    <tr  class="model-{{ student.object_name|lower }}">
+        <th scope="row"><label >性别:</label></th>
+        <th scope="row" class="content">  <label >{{ studet.Gender }}</label></th>
+    </tr>
+    <tr  class="model-{{ student.object_name|lower }}">
+        <th scope="row"><label >年龄：</label></th>
+        <th scope="row" class="content">  <label >{{ student.Age }}</label></th>
+    </tr>
+    <tr  class="model-{{ student.object_name|lower }}">
+        <th scope="row"><label >邮箱:</label></th>
+        <th scope="row" class="content">  <label >{{ student.Email }}</label></th>
+    </tr>
+    <tr  class="model-{{ student.object_name|lower }}">
+        <th scope="row"><label >电话：</label></th>
+        <th scope="row" class="content">  <label >{{ student.Tel }}</label></th>
+    </tr>
+    {% if student.ElectiveCourses.count > 0 %}
+     <tr  class="model-course">
+      <th scope="row"><label >课程：</label></th>
+     <th scope="row" class="content">
+     {% for course in student.ElectiveCourses.all %}
+         <label >{{ course.Name }}</label>
+     {% endfor %}
+     </th>
+     </tr>
+    {% endif %}
+
+</table>
+    <p class="submit"><a href=" {{student.actionChangeInfo}}"><input type='button' name="submit" id="submit" class="button-primary"  value="update"></input></a></p>
+</div>
+</div>
+{% endblock %}

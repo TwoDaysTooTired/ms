@@ -14,6 +14,7 @@
 
 {% if app_list %}
     {% for app in app_list %}
+        {% ifnotequal app.app_label 'auth' %}
         <div class="app-{{ app.app_label }} module">
         <table>
         <caption>
@@ -42,10 +43,38 @@
         {% endfor %}
         </table>
         </div>
+        {% endifnotequal %}
     {% endfor %}
 {% else %}
     <p>{% trans "You don't have permission to edit anything." %}</p>
 {% endif %}
+    <div class="app-{{ app.app_label }} module">
+        <table style="width: 100%;white-space: nowrap">
+        <caption>
+{#            <a href='login' class="section" title="module"> Materail Manager</a>#}
+            <label class="section" >Material Manager</label>
+        </caption>
+            <tr class="model-material-storage">
+                <th scope="row"><a href="/materialStorage/detail/">Materail Storage</a></th>
+            </tr>
+            <tr class="model-material-storage">
+                <th scope="row"><a href="/materialAlloc/detail/">Materials Allocation</a></th>
+            </tr>
+        </table>
+    </div>
+    <div class="app-{{ app.app_label }} module">
+        <table style="width: 100%;white-space: nowrap">
+        <caption>
+            <label class="section" >Material entry and exit records. </label>
+        </caption>
+            <tr class="model-material-storage">
+                <th scope="row"><a href="/materialRecord/entry/">Material entry record</a></th>
+            </tr>
+            <tr class="model-material-storage">
+                <th scope="row"><a href="/materialRecord/out/">Material outbound records</a></th>
+            </tr>
+        </table>
+    </div>
 </div>
 {% endblock %}
 

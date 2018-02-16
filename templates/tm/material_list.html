@@ -11,7 +11,7 @@
 
 {% block content %}
 <div id="content-main">
-{% if materail_list %}
+{% if object_list  %}
     <table>
     <caption>All Materials</caption>
           <tr class="model-{{ model.object_name|lower }}">
@@ -20,16 +20,21 @@
             <th scope="row">Type</th>
             <th scope="row">Price</th>
             <th scope="row">Num</th>
+              <th scope="row">isOverflow</th>
         </tr>
-    {% for material in material_list %}
+    {% for material in object_list  %}
         <tr class="model-{{ model.object_name|lower }}">
             <td scope="row">{{ material.id }}</td>
             <td scope="row">{{ material.Name }}</td>
             <td scope="row">{{ material.Type }}</td>
             <td scope="row">{{ material.Price }}</td>
-            <td scope="row">{{ material.Num }}</td>
-            <td scope="row">{{ material.Price }}</td>
-             <td><a href="/materialStorage/add/" class="addlink">{% trans 'Add' %}</a></td>
+            {% if material.InventoryNum %}
+                <td scope="row">{{ material.InventoryNum }}</td>
+            {% else %}
+                <td scope="row">0</td>
+            {% endif %}
+            <td scope="row">{{ material.isOverflow }}</td>
+             <td><a href="/materialStorage/add/?mid={{ material.id }}" class="addlink">{% trans 'Add' %}</a></td>
         </tr>
     {% endfor %}
     </table>

@@ -3,6 +3,7 @@ from .models import Material
 from .models import Course
 from .models import Grade
 from .models import StudentInfo
+from .models import MaterialStorageModel
 from django.contrib.auth.models import User
 from sim.models import StudentUser
 # Register your models here.
@@ -39,7 +40,8 @@ class StudentInfoAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.save()
-        StudentUser.create_studentuser(obj)
+        StudentInfo.createStudentUser(obj)
+
 
 
 

@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% block branding %}
+    {% if student %}
+<h1 id="site-name">
+
+    <a href="/login/success/" style="width:50%">{{student.SerialNum}},{{ student.Name }}</a>
+{#    <a href="/login/success/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Main</a>#}
+    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Logout</a>
+
+</h1>
+    {% endif %}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+<div class="changePwd module">
+
+<form d="your-profile" action="/changePassword/" method="post">
+<table width="100%" align="left">
+<caption class="section">修改密码</caption>
+{% if errors %}
+       <td><p style="font-size: 22px; color: orangered">{{ errors }}</p></td>
+{% endif %}
+    {% for field in form %}
+        <tr>
+            <td>{{ field.label_tag }}</td>
+            <td>{{ field }}</td>
+            <td>{{ field.errors }}</td>
+        </tr>
+    {% endfor %}
+</table>
+   <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="update"  /></p>
+    {% csrf_token %}
+</form>
+</div>
+</div>
+{% endblock %}

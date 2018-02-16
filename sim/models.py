@@ -25,12 +25,14 @@ class StudentUser(models.Model):
             return True
         return False
 
-    @staticmethod
-    def create_studentuser(studentinfo):
-        obj = StudentUser.objects.get(SerialNum=studentinfo.SerialNum)
-        if not obj :
-            studentUser = StudentUser(SerialNum = studentinfo.SerialNum,Password='123456',studentInfo = studentinfo)
-            user = User.objects.create_user(username=studentinfo.SerialNum, password='123456',email= studentinfo.Email)
-            user.save()
-            studentUser.save()
-        return studentUser
+    # @staticmethod
+    # def create_studentuser(studentinfo):
+    #     obj = StudentUser.objects.get(SerialNum=studentinfo.SerialNum)
+    #     if not obj :
+    #         studentUser = StudentUser(SerialNum = studentinfo.SerialNum,Password='123456',studentInfo = studentinfo)
+    #         user = User.objects.create_user(username=studentinfo.SerialNum, password='123456',email= studentinfo.Email)
+    #         user.user_permissions.add(models.user.add)
+    #         user.user_permissions.add(models.user.change)
+    #         user.save()
+    #         studentUser.save()
+    #     return studentUser
