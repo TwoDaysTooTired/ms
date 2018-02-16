@@ -6,7 +6,7 @@
 
     <a href="/login/success/" style="width:50%">{{student.SerialNum}},{{ student.Name }}</a>
 {#    <a href="/login/success/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Main</a>#}
-    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Logout</a>
+    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{% trans 'Logout' %}</a>
 
 </h1>
     {% endif %}
@@ -28,19 +28,19 @@
     <div class="student module">
     <table width="100%">
     <caption>
-            <a href="" class="section" title="{% blocktrans with name=student.Name %}{{ name }} {% endblocktrans %}"> 操 作</a>
+            <a href="" class="section" title="{% blocktrans with name=student.Name %}{{ name }} {% endblocktrans %}"> {% trans 'Action' %}</a>
     </caption>
     <tr class="model-{{ student.object_name|lower }}">
-                <th scope="row"><a href="{{ student.actionDetail}}"> 个人资料 </a></th>
+                <th scope="row"><a href="{{ student.actionDetail}}"> {% trans 'Persion Info' %} </a></th>
      </tr>
      <tr class="model-{{ student.object_name|lower }}">
-                <th scope="row"><a href="{{ student.actionChangeInfo}}"> 修改信息 </a></th>
+                <th scope="row"><a href="{{ student.actionChangeInfo}}"> {% trans 'Update Info' %} </a></th>
      </tr>
      <tr class="model-{{ student.object_name|lower }}">
-                <th scope="row"><a href="{{ student.actionChangeGrade}}"> 选课 </a></th>
+                <th scope="row"><a href="{{ student.actionChangeGrade}}"> {% trans 'Choose Cources' %}  </a></th>
      </tr>
      <tr class="model-{{ student.object_name|lower }}">
-                <th scope="row"><a href="{{ student.actionChangePassword}}"> 修改密码 </a></th>
+                <th scope="row"><a href="{{ student.actionChangePassword}}">{% trans 'Change Password' %}  </a></th>
      </tr>
     <p>
     </p>

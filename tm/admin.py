@@ -52,3 +52,4 @@ admin.site.register(Material,MaterialAdmin)
 admin.site.register(Course,CourseAdmin)
 admin.site.register(Grade,GradeAdmin)
 admin.site.register(StudentInfo,StudentInfoAdmin)
+admin.site.site_url='/admin'

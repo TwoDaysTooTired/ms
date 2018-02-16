@@ -6,9 +6,9 @@ import hashlib;
 
 
 class StudentUser(models.Model):
-    SerialNum = models.CharField("StudentId",max_length=15)
-    Password = models.CharField("Password",max_length=15)
-    Email = models.EmailField("Email",blank=True, null= True);
+    SerialNum = models.CharField("学号",max_length=15)
+    Password = models.CharField("密码",max_length=15)
+    Email = models.EmailField("邮箱",blank=True, null= True);
     studentInfo = models.OneToOneField(StudentInfo,on_delete=models.CASCADE)
 
     def is_authenticated(self):

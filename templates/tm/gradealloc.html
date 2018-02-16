@@ -19,13 +19,13 @@
     <table style="width:auto">
     {% if material_list|length > 0 %}
     <caption class="section">
-        <label style="font-size: 22px;color: green">Base Cources Info</label>
+        <label style="font-size: 22px;color: green">{% trans 'Base Cources Info' %}</label>
     </caption>
         <tr class = "model-Materials }}">
-        <th scope="row">Material SerialNum</th>
-        <th scope="row">Material Name</th>
-        <th scope="row">InventoryNum</th>
-        <th scope="row">Price</th>
+        <th scope="row">{% trans 'Material SerialNum' %}</th>
+        <th scope="row">{% trans 'Material Name' %}</th>
+        <th scope="row">{% trans 'InventoryNum'%}</th>
+        <th scope="row">{% trans 'Price' %}</th>
         </tr>
     {% for material in material_list %}
          {% if material.InventoryNum < grade.studentNum %}
@@ -48,10 +48,10 @@
          {% endif %}
     {% endfor %}
     {% else %}
-        <label style="font-size: 22px;color: green">There no base Cource</label>
+        <label style="font-size: 22px;color: green">{% trans 'There no base Cource' %}</label>
     {% endif %}
     {% if not isEnough  %}
-    <label style="font-size: 30px;color: red">Lack of material </label>
+    <label style="font-size: 30px;color: red">{% trans 'Lack of material' %}</label>
     {% endif %}
     <tr align="center">
         <td scope="row" colspan="3">
@@ -64,7 +64,7 @@
         </td>
     </tr>
     </table>
-    <h1 style="font-size: 22px;color: green" >there are {{ grade.studentNum }} students here.</h1>
+    <h1 style="font-size: 22px;color: green" >{% trans 'there are' %} {{ grade.studentNum }} {% trans 'students here.' %}</h1>
 
 </form>
 </div>

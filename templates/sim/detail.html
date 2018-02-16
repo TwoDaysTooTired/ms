@@ -24,43 +24,43 @@
 <div class="student module">
 
 
-<table width="50%"  style="align-items: left">
+<table>
 <style>
     .content{width: 450px;
         overflow: hidden;}
 </style>
-    <caption class="section">详细资料</caption>
+    <caption class="section">{% trans 'Detail Info' %}</caption>
     <tr  class="model-{{ student.object_name|lower }}" align="left">
-        <th scope="row">  <label >姓名：</label></th>
+        <th scope="row">  <label >{% trans 'Name:' %}</label></th>
          <th scope="row" class="content">  <label >{{ student.Name }}</label></th>
     </tr>
     <tr  class="model-{{ student.object_name|lower }}">
-        <th scope="row"><label >学号:</label></th>
+        <th scope="row"><label >{% trans 'Student Number:' %}</label></th>
         <th scope="row" class="content">  <label>{{ student.SerialNum }}</label></th>
     </tr>
     <tr class="model-{{  student.object_name|lower }}">
-        <th scope="row"><label >班级：</label></th>
+        <th scope="row"><label >{% trans 'Class and Grade:' %}</label></th>
         <th scope="row" class="content"> <label >{{ student.Grade}}</label></th>
     </tr>
     <tr  class="model-{{ student.object_name|lower }}">
-        <th scope="row"><label >性别:</label></th>
+        <th scope="row"><label >{% trans 'Gender:' %}</label></th>
         <th scope="row" class="content">  <label >{{ studet.Gender }}</label></th>
     </tr>
     <tr  class="model-{{ student.object_name|lower }}">
-        <th scope="row"><label >年龄：</label></th>
+        <th scope="row"><label >{% trans 'Age:' %}</label></th>
         <th scope="row" class="content">  <label >{{ student.Age }}</label></th>
     </tr>
     <tr  class="model-{{ student.object_name|lower }}">
-        <th scope="row"><label >邮箱:</label></th>
+        <th scope="row"><label >{% trans 'Email:' %}</label></th>
         <th scope="row" class="content">  <label >{{ student.Email }}</label></th>
     </tr>
     <tr  class="model-{{ student.object_name|lower }}">
-        <th scope="row"><label >电话：</label></th>
+        <th scope="row"><label >{% trans 'Tel' %}</label></th>
         <th scope="row" class="content">  <label >{{ student.Tel }}</label></th>
     </tr>
     {% if student.ElectiveCourses.count > 0 %}
      <tr  class="model-course">
-      <th scope="row"><label >课程：</label></th>
+      <th scope="row"><label >{% trans 'Cources:' %}</label></th>
      <th scope="row" class="content">
      {% for course in student.ElectiveCourses.all %}
          <label >{{ course.Name }}</label>

@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class TmConfig(AppConfig):
-    name = 'Teach Info Manager'
+    name = 'tm'
+    verbose_name = u"教学信息管理"

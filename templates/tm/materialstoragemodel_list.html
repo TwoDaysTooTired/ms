@@ -14,12 +14,12 @@
 <div class="module">
 {% if object_list|length > 0  %}
     <table>
-    <caption>All entry records.</caption>
+    <caption>{% trans 'All entry records.' %}</caption>
           <tr class="model-{{ model.object_name|lower }}">
-            <th scope="row">Id </th>
-            <th scope="row">Material Name</th>
-            <th scope="row">Num</th>
-            <th scope="row">Date Time</th>
+            <th scope="row">{% trans 'Id' %}</th>
+            <th scope="row">{% trans 'Material Name' %}</th>
+            <th scope="row">{% trans 'Num' %}</th>
+            <th scope="row">{% trans 'Date Time' %}</th>
         </tr>
     {% for recorder in object_list  %}
         <tr class="model-{{ model.object_name|lower }}">
@@ -30,8 +30,8 @@
         </tr>
     {% endfor %}
     </table>
-        {% else %}
-    <a href="/admin/"><label style="font-size: 30px">NO RECORDS</label></a>
+    {% else %}
+    <a href="/admin/"><label style="font-size: 30px">{% trans 'NO RECORDS' %}</label></a>
 {% endif %}
 </div>
 </div>

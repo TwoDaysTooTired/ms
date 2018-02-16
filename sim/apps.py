@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class SimConfig(AppConfig):
-    name = 'Student Info Manager'
+    name = '学生信息管理'
+

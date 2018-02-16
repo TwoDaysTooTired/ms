@@ -11,6 +11,6 @@
 
 {% block content %}
 <div id="content-main">
-    <label style="font-size: 22px;color: green"> Material :{{ material.Name }} add {{ num }} success</label>
+    <label style="font-size: 22px;color: green">{% trans ' Material:' %}{{ material.Name }} {% trans 'add' %} {{ num }} {% trans 'success' %}</label>
 </div>
 {% endblock %}

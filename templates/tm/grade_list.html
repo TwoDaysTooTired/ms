@@ -13,14 +13,14 @@
 <div id="content-main">
 {% if object_list  %}
     <table>
-    <caption>All Materials</caption>
+    <caption>{% trans 'All Materials' %}</caption>
           <tr class="model-{{ model.object_name|lower }}">
-            <th scope="row">Id </th>
-            <th scope="row">Name</th>
-            <th scope="row">Student of Num</th>
-            <th scope="row">Allocated Num of Materials</th>
-            <th scope="row">Total of Material Num</th>
-              <th scope="row">isAllocateAll</th>
+            <th scope="row">{% trans 'Id' %} </th>
+            <th scope="row">{% trans 'Material Name' %} </th>
+            <th scope="row">{% trans 'Student of Num' %}</th>
+            <th scope="row">{% trans 'Allocated Num of Materials' %}</th>
+            <th scope="row">{% trans 'Total of Material Num' %}</th>
+              <th scope="row">{% trans 'isAllocateAll' %}</th>
         </tr>
     {% for grade in object_list  %}
         <tr class="model-{{ model.object_name|lower }}">

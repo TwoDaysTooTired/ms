@@ -52,26 +52,26 @@
         <table style="width: 100%;white-space: nowrap">
         <caption>
 {#            <a href='login' class="section" title="module"> Materail Manager</a>#}
-            <label class="section" >Material Manager</label>
+            <label class="section" >{% trans '材料管理' %}</label>
         </caption>
             <tr class="model-material-storage">
-                <th scope="row"><a href="/materialStorage/detail/">Materail Storage</a></th>
+                <th scope="row"><a href="/materialStorage/detail/">{% trans '材料入库' %}</a></th>
             </tr>
             <tr class="model-material-storage">
-                <th scope="row"><a href="/materialAlloc/detail/">Materials Allocation</a></th>
+                <th scope="row"><a href="/materialAlloc/detail/">{% trans '材料分配' %}</a></th>
             </tr>
         </table>
     </div>
     <div class="app-{{ app.app_label }} module">
         <table style="width: 100%;white-space: nowrap">
         <caption>
-            <label class="section" >Material entry and exit records. </label>
+            <label class="section" >{% trans '材料出入库记录' %} </label>
         </caption>
             <tr class="model-material-storage">
-                <th scope="row"><a href="/materialRecord/entry/">Material entry record</a></th>
+                <th scope="row"><a href="/materialRecord/entry/">{% trans '材料入库记录' %}</a></th>
             </tr>
             <tr class="model-material-storage">
-                <th scope="row"><a href="/materialRecord/out/">Material outbound records</a></th>
+                <th scope="row"><a href="/materialRecord/out/">{% trans '材料出库记录' %}</a></th>
             </tr>
         </table>
     </div>

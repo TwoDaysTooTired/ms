@@ -13,14 +13,14 @@
 <div id="content-main">
 {% if object_list  %}
     <table>
-    <caption>All Materials</caption>
+    <caption>{% trans 'All Materials' %}</caption>
           <tr class="model-{{ model.object_name|lower }}">
-            <th scope="row">Id </th>
-            <th scope="row">Name</th>
-            <th scope="row">Type</th>
-            <th scope="row">Price</th>
-            <th scope="row">Num</th>
-              <th scope="row">isOverflow</th>
+            <th scope="row">{% trans 'Id' %}</th>
+            <th scope="row">{% trans 'Material Name' %}</th>
+            <th scope="row">{% trans 'Material Type' %}</th>
+            <th scope="row">{% trans 'Price' %}</th>
+            <th scope="row">{% trans 'Num' %}</th>
+              <th scope="row">{% trans 'IsOverflow' %}</th>
         </tr>
     {% for material in object_list  %}
         <tr class="model-{{ model.object_name|lower }}">
