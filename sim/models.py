@@ -1,18 +1,18 @@
 from django.db import models
 from tm.models import StudentInfo
 from django.contrib.auth.models import User
-import hashlib;
+import hashlib
 # Create your models here.
 
 
 class StudentUser(models.Model):
-    SerialNum = models.CharField("学号",max_length=15)
-    Password = models.CharField("密码",max_length=15)
-    Email = models.EmailField("邮箱",blank=True, null= True);
-    studentInfo = models.OneToOneField(StudentInfo,on_delete=models.CASCADE)
+    SerialNum = models.CharField("学号", max_length=15)
+    Password = models.CharField("密码", max_length=15)
+    Email = models.EmailField("邮箱", blank=True, null=True)
+    studentInfo = models.OneToOneField(StudentInfo, on_delete=models.CASCADE)
 
     def is_authenticated(self):
-        return True;
+        return True
 
     def hashed_password(self, password=None):
         if not password:

@@ -16,11 +16,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='StudentUser',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('SerialNum', models.CharField(max_length=15, verbose_name='StudentId')),
-                ('Password', models.CharField(max_length=15, verbose_name='Password')),
-                ('Email', models.EmailField(blank=True, max_length=254, null=True, verbose_name='Email')),
-                ('studentInfo', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='tm.StudentInfo')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('SerialNum', models.CharField(
+                    max_length=15, verbose_name='StudentId')),
+                ('Password', models.CharField(
+                    max_length=15, verbose_name='Password')),
+                ('Email', models.EmailField(blank=True,
+                                            max_length=254, null=True, verbose_name='Email')),
+                ('studentInfo', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE, to='tm.StudentInfo')),
             ],
         ),
     ]

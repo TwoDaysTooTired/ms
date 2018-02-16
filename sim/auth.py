@@ -1,5 +1,6 @@
 from sim.models import StudentUser
 
+
 class MyCustomBackend:
 
     def authenticate(self, serialNum=None, password=None):
