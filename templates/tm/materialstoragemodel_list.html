@@ -10,10 +10,11 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
+
 <div id="content-main">
 <div class="module">
-{% if object_list|length > 0  %}
-    <table>
+
+    <table class="module" >
     <caption>{% trans 'All entry records.' %}</caption>
           <tr class="model-{{ model.object_name|lower }}">
             <th scope="row">{% trans 'Id' %}</th>
@@ -21,6 +22,7 @@
             <th scope="row">{% trans 'Num' %}</th>
             <th scope="row">{% trans 'Date Time' %}</th>
         </tr>
+        {% if object_list|length > 0  %}
     {% for recorder in object_list  %}
         <tr class="model-{{ model.object_name|lower }}">
             <td scope="row">{{ recorder.id }}</td>
@@ -29,9 +31,18 @@
             <td scope="row">{{  recorder.Data }}</td>
         </tr>
     {% endfor %}
+            {% else %}
+             <tr class="model-{{ "-" }}">
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{  "-" }}</td>
+
+        {% endif %}
+
     </table>
-    {% else %}
-    <a href="/admin/"><label style="font-size: 30px">{% trans 'NO RECORDS' %}</label></a>
+ {% if not object_list|length > 0  %}
+<a href="/admin/"><label style="font-size: 30px;text-decoration: underline">{% trans 'NO RECORDS' %}</label></a>
 {% endif %}
 </div>
 </div>

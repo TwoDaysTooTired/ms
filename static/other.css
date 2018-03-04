@@ -1,0 +1,30 @@
+  body {
+    margin: 0px  ;
+    padding: 0px 10px;
+    font-size: 23px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+/*.module {*/
+    /*border: 20px;*/
+    /*margin-bottom: 30px;*/
+/*}*/
+
+/*.module h2, .module caption, .inline-group h2 {*/
+    /*margin: 0 auto;*/
+    /*padding: 8px;*/
+    /*font-weight: 400;*/
+    /*font-size: 20px;*/
+    /*text-align: left;*/
+/*}*/
+
+/*.module caption,*/
+/*.inline-group h2 {*/
+    /*font-size: 20px;*/
+    /*letter-spacing: 0.5px;*/
+/*}*/
+
+/*.module table {*/
+    /*white-space: nowrap;*/
+    /*border-width: 20px;*/
+/*}*/

@@ -1,0 +1,43 @@
+  body {
+    margin: 0px ;
+    padding: 0px 10px;
+    font-size: 23px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+    #content {
+        padding: 20px auto;
+        margin: 0px auto ;
+        /*font-size: 27px;*/
+    }
+
+    /* MODULES */
+
+.module {
+    border: none;
+    margin-bottom: 30px;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    margin: 0;
+    padding: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+}
+
+.module caption,
+.inline-group h2 {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+.module table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+ td, th {
+        padding: 10px;
+        font-size: 17px;
+    }

@@ -1,4 +1,4 @@
-{% extends "admin/base_site.html" %}
+{% extends "sim/base_site.html" %}
 {% load i18n static %}
 {% block branding %}
     {% if student %}
@@ -6,7 +6,7 @@
 
     <a href="/login/success/" style="width:50%">{{student.SerialNum}},{{ student.Name }}</a>
 {#    <a href="/login/success/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Main</a>#}
-    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Logout</a>
+    <a href="/student/logout/">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{% trans 'Logout' %}</a>
 
 </h1>
     {% endif %}
@@ -25,7 +25,7 @@
 
 <form d="your-profile" action="/changePassword/" method="post">
 <table width="100%" align="left">
-<caption class="section">{% trans Change Password %}</caption>
+<caption class="section">{% trans 'Change Password' %}</caption>
 {% if errors %}
        <td><p style="font-size: 22px; color: orangered">{{ errors }}</p></td>
 {% endif %}
@@ -37,7 +37,7 @@
         </tr>
     {% endfor %}
 </table>
-   <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="update"  /></p>
+   <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="确认"  /></p>
     {% csrf_token %}
 </form>
 </div>

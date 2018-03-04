@@ -8,7 +8,7 @@
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
-
+<link rel="stylesheet" type="text/css" href="{% static "other.css" %}" />
 {% block content %}
 <div id="content-main">
 {% if not isEnough %}
@@ -16,7 +16,7 @@
 {% else %}
     <form action="/materialAlloc/alloc/?gid={{ grade.id }}" method="post">{% csrf_token %}
 {% endif %}
-    <table style="width:auto">
+    <table style="width:100%" class="module">
     {% if material_list|length > 0 %}
     <caption class="section">
         <label style="font-size: 22px;color: green">{% trans 'Base Cources Info' %}</label>
@@ -54,11 +54,11 @@
     <label style="font-size: 30px;color: red">{% trans 'Lack of material' %}</label>
     {% endif %}
     <tr align="center">
-        <td scope="row" colspan="3">
+        <td scope="row" colspan="4">
             {% if not isEnough %}
                 <p class="submit" style="color: gray"><input type="submit" name="submit" id="submit" class="button-primary" value="return"  /></p>
             {% else %}
-                <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="alloc"  /></p>
+                <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="分配"  /></p>
             {% endif %}
 
         </td>

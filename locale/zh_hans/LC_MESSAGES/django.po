@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-16 21:25+0800\n"
+"POT-Creation-Date: 2018-03-04 10:23+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\templates\admin\base.html:35
+#: .\templates\admin\base.html:36
 msgid "Welcome,"
 msgstr "欢迎"
 
-#: .\templates\admin\base.html:40
+#: .\templates\admin\base.html:41
 msgid "View site"
 msgstr "查看站点"
 
-#: .\templates\admin\base.html:45
+#: .\templates\admin\base.html:46
 #, fuzzy
 #| msgid "Recent actions"
 msgid "Documentation"
 msgstr "最近行为"
 
-#: .\templates\admin\base.html:49
+#: .\templates\admin\base.html:50
 #, fuzzy
 #| msgid "Change Password"
 msgid "Change password"
 msgstr "修改密码"
 
-#: .\templates\admin\base.html:51
+#: .\templates\admin\base.html:52
 #, fuzzy
 #| msgid "Log in"
 msgid "Log out"
 msgstr "登入"
 
-#: .\templates\admin\base.html:61
+#: .\templates\admin\base.html:62
 msgid "Home"
 msgstr "主页"
 
@@ -52,17 +52,15 @@ msgid "site admin"
 msgstr "网站管理"
 
 #: .\templates\admin\base_site.html:6
-#, fuzzy
-#| msgid "Material Manager"
-msgid "Teach Manager"
-msgstr "教学管理"
+msgid "教学管理"
+msgstr ""
 
 #: .\templates\admin\index.html:21
 #, python-format
 msgid "Models in the %(name)s application"
 msgstr "所有的模块在 %(name)s 应用中"
 
-#: .\templates\admin\index.html:32 .\templates\tm\material_list.html:37
+#: .\templates\admin\index.html:32 .\templates\tm\material_list.html:43
 msgid "Add"
 msgstr "添加"
 
@@ -75,38 +73,28 @@ msgid "You don't have permission to edit anything."
 msgstr ""
 
 #: .\templates\admin\index.html:55
-msgid "Material Manager"
-msgstr "材料管理"
+msgid "材料管理"
+msgstr ""
 
 #: .\templates\admin\index.html:58
-#, fuzzy
-#| msgid "Material Name"
-msgid "Materail Storage"
-msgstr "材料名"
+msgid "材料入库"
+msgstr ""
 
 #: .\templates\admin\index.html:61
-#, fuzzy
-#| msgid "Materials"
-msgid "Materials Allocation"
-msgstr "材料"
+msgid "材料分配"
+msgstr ""
 
 #: .\templates\admin\index.html:68
-#, fuzzy
-#| msgid "Material entry and exit records "
-msgid "Material entry and exit records"
-msgstr "材料出入库记录"
+msgid "材料出入库记录"
+msgstr ""
 
 #: .\templates\admin\index.html:71
-#, fuzzy
-#| msgid "Material entry and exit records "
-msgid "Material entry record"
-msgstr "材料出入库记录"
+msgid "材料入库记录"
+msgstr ""
 
 #: .\templates\admin\index.html:74
-#, fuzzy
-#| msgid "Material entry and exit records "
-msgid "Material outbound records"
-msgstr "材料出入库记录"
+msgid "材料出库记录"
+msgstr ""
 
 #: .\templates\admin\index.html:84 .\templates\sim\loginSuccess.html:55
 msgid "Recent actions"
@@ -127,6 +115,20 @@ msgstr ""
 #: .\templates\sim\base_site.html:3 .\templates\sim\base_site.html:6
 msgid "Teach Material Management"
 msgstr "教学材料管理"
+
+#: .\templates\sim\changeInfo.html:9 .\templates\sim\changePwd.html:9
+#: .\templates\sim\changePwdSuccess.html:9 .\templates\sim\choseCources.html:9
+#: .\templates\sim\detail.html:9 .\templates\sim\loginSuccess.html:9
+msgid "Logout"
+msgstr "登出"
+
+#: .\templates\sim\changePwd.html:28 .\templates\sim\loginSuccess.html:43
+msgid "Change Password"
+msgstr "修改密码"
+
+#: .\templates\sim\choseCources.html:28 .\templates\sim\loginSuccess.html:40
+msgid "Choose Cources"
+msgstr "选课"
 
 #: .\templates\sim\detail.html:32
 msgid "Detail Info"
@@ -180,10 +182,6 @@ msgstr "忘记密码或用户名？"
 msgid "Log in"
 msgstr "登入"
 
-#: .\templates\sim\loginSuccess.html:9
-msgid "Logout"
-msgstr "登出"
-
 #: .\templates\sim\loginSuccess.html:31
 #, python-format
 msgid "%(name)s "
@@ -201,28 +199,20 @@ msgstr "个人信息"
 msgid "Update Info"
 msgstr "更新信息"
 
-#: .\templates\sim\loginSuccess.html:40
-msgid "Choose Cources"
-msgstr "选课"
-
-#: .\templates\sim\loginSuccess.html:43
-msgid "Change Password"
-msgstr "修改密码"
-
-#: .\templates\tm\grade_list.html:16 .\templates\tm\material_list.html:16
+#: .\templates\tm\grade_list.html:16 .\templates\tm\material_list.html:17
 msgid "All Materials"
 msgstr "所有材料"
 
-#: .\templates\tm\grade_list.html:18 .\templates\tm\material_list.html:18
+#: .\templates\tm\grade_list.html:18 .\templates\tm\material_list.html:19
 #: .\templates\tm\materialallocmodel_list.html:19
-#: .\templates\tm\materialstoragemodel_list.html:19
+#: .\templates\tm\materialstoragemodel_list.html:20
 msgid "Id"
 msgstr "编号"
 
 #: .\templates\tm\grade_list.html:19 .\templates\tm\gradealloc.html:26
-#: .\templates\tm\material_list.html:19
+#: .\templates\tm\material_list.html:20
 #: .\templates\tm\materialallocmodel_list.html:20
-#: .\templates\tm\materialstoragemodel_list.html:20
+#: .\templates\tm\materialstoragemodel_list.html:21
 msgid "Material Name"
 msgstr "材料名"
 
@@ -242,7 +232,7 @@ msgstr "材料总量"
 msgid "isAllocateAll"
 msgstr "是否分配完"
 
-#: .\templates\tm\grade_list.html:34
+#: .\templates\tm\grade_list.html:35
 msgid "Alloc"
 msgstr "分配"
 
@@ -258,7 +248,7 @@ msgstr "材料编号"
 msgid "InventoryNum"
 msgstr "库存数量"
 
-#: .\templates\tm\gradealloc.html:28 .\templates\tm\material_list.html:21
+#: .\templates\tm\gradealloc.html:28 .\templates\tm\material_list.html:22
 msgid "Price"
 msgstr "价格"
 
@@ -278,19 +268,27 @@ msgstr "这里"
 msgid "students here."
 msgstr "学生"
 
-#: .\templates\tm\material_list.html:20
+#: .\templates\tm\material_list.html:21
 msgid "Material Type"
 msgstr "材料类型"
 
-#: .\templates\tm\material_list.html:22
-#: .\templates\tm\materialallocmodel_list.html:21
-#: .\templates\tm\materialstoragemodel_list.html:21
+#: .\templates\tm\material_list.html:23
+#: .\templates\tm\materialallocmodel_list.html:22
+#: .\templates\tm\materialstoragemodel_list.html:22
 msgid "Num"
 msgstr "数量"
 
-#: .\templates\tm\material_list.html:23
+#: .\templates\tm\material_list.html:24
 msgid "IsOverflow"
 msgstr "是否溢出"
+
+#: .\templates\tm\material_list.html:39
+msgid "Yes"
+msgstr "是"
+
+#: .\templates\tm\material_list.html:41
+msgid "No"
+msgstr "否"
 
 #: .\templates\tm\materialallocSuccess.html:14
 msgid " Material:"
@@ -306,17 +304,24 @@ msgid "success"
 msgstr "成功"
 
 #: .\templates\tm\materialallocmodel_list.html:17
-#: .\templates\tm\materialstoragemodel_list.html:17
-msgid "All entry records."
-msgstr "所有入库记录"
+#, fuzzy
+#| msgid "All entry records."
+msgid "All OutPut records."
+msgstr "所有出库记录"
 
-#: .\templates\tm\materialallocmodel_list.html:22
-#: .\templates\tm\materialstoragemodel_list.html:22
+#: .\templates\tm\materialallocmodel_list.html:21
+#, fuzzy
+#| msgid "Grade:"
+msgid "Grade"
+msgstr "班级："
+
+#: .\templates\tm\materialallocmodel_list.html:23
+#: .\templates\tm\materialstoragemodel_list.html:23
 msgid "Date Time"
 msgstr "日期时间"
 
-#: .\templates\tm\materialallocmodel_list.html:34
-#: .\templates\tm\materialstoragemodel_list.html:34
+#: .\templates\tm\materialallocmodel_list.html:46
+#: .\templates\tm\materialstoragemodel_list.html:45
 msgid "NO RECORDS"
 msgstr "无记录"
 
@@ -335,3 +340,40 @@ msgstr "材料"
 #: .\templates\tm\materialstorage_form.html:17
 msgid "Add inventory to  Material :"
 msgstr "添加库存："
+
+#: .\templates\tm\materialstoragemodel_list.html:18
+msgid "All entry records."
+msgstr "所有入库记录"
+
+#, fuzzy
+#~| msgid "Material Manager"
+#~ msgid "Teach Manager"
+#~ msgstr "教学管理"
+
+#~ msgid "Material Manager"
+#~ msgstr "材料管理"
+
+#, fuzzy
+#~| msgid "Material Name"
+#~ msgid "Materail Storage"
+#~ msgstr "材料名"
+
+#, fuzzy
+#~| msgid "Materials"
+#~ msgid "Materials Allocation"
+#~ msgstr "材料"
+
+#, fuzzy
+#~| msgid "Material entry and exit records "
+#~ msgid "Material entry and exit records"
+#~ msgstr "材料出入库记录"
+
+#, fuzzy
+#~| msgid "Material entry and exit records "
+#~ msgid "Material entry record"
+#~ msgstr "材料出入库记录"
+
+#, fuzzy
+#~| msgid "Material entry and exit records "
+#~ msgid "Material outbound records"
+#~ msgstr "材料出入库记录"

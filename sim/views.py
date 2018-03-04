@@ -9,21 +9,6 @@ from sim.form import StudentInfoForm, PasswordChangeForm, StudentCoursesChooseFo
 
 from django.shortcuts import get_object_or_404
 
-    
-class StudentUserLoginView(View):
-    def get(self,request):
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = auth.authenticate(username = username, password = password)
-        if request.POST:
-            if user is not None and user.is_active:
-                auth.login(request, user)
-                return HttpResponse("loginSuccess")
-            else:
-                return render(request,"sim/login.html", {'form.errors':"wrong u sername or password"})
-        else:
-            return render(request, 'sim/login.html', {'next':'admin'})
-
 
 def loginSuccess(request):
     if request.method == "GET":
@@ -84,11 +69,11 @@ def changePassword(request):
                         request.user.save()
                         return render(request,template_name='sim/changePwdSuccess.html')
                     else:
-                        msg = "Entered passwords differ"
+                        msg = "两次密码输入不一致"
                         f.initial = {'oldPassword':oldpwd,'newPassword':newpwd,'confirmPassword':confirmpwd}
                         return render(request, "sim/changePwd.html",{'form':f,'errors':msg})
                 else:
-                    msg = "Original password error"
+                    msg = "原密码错误，请输入正确密码"
                     f.initial = {'oldPassword': oldpwd, 'newPassword': newpwd, 'confirmPassword': confirmpwd}
                     return render(request, "sim/changePwd.html", {'student':student,'form': f,'errors':msg})
             else:

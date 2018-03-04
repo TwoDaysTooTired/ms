@@ -2,7 +2,7 @@
 {% load i18n static %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
-
+<link rel="stylesheet" type="text/css" href="{% static "dashboard.css" %}" />
 {% block coltype %}colMS{% endblock %}
 
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
@@ -10,7 +10,8 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
-<div id="content-main">
+    {% block content_title %}{% endblock %}
+<div id="content-main" style="margin: auto;">
 
 {% if app_list %}
     {% for app in app_list %}
@@ -18,7 +19,8 @@
         <div class="app-{{ app.app_label }} module">
         <table>
         <caption>
-            <a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>
+{#            <a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>#}
+       {{ app.name }}
         </caption>
         {% for model in app.models %}
             <tr class="model-{{ model.object_name|lower }}">

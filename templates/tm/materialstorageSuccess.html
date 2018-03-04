@@ -8,7 +8,7 @@
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
-
+<link rel="stylesheet" type="text/css" href="{% static "other.css" %}" />
 {% block content %}
 <div id="content-main">
     <a href="/admin/"><label style="font-size: 22px;color: green"> {% trans 'Grade:' %} {{ grade.Name }} {% trans 'alloc' %} {{ grade.fullNum }} {% trans 'Materials' %} {% trans 'success' %}! </label></a>

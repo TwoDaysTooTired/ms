@@ -15,9 +15,9 @@ class StudentCoursesChooseForm(ModelForm):
         }
 
 class PasswordChangeForm(forms.Form):
-    oldPassword = forms.CharField(widget=forms.PasswordInput(),label="old password:",min_length=6,max_length=16,required=True,strip=True,
+    oldPassword = forms.CharField(widget=forms.PasswordInput(),label="旧密码:",min_length=6,max_length=16,required=True,strip=True,
                                   error_messages={'required': 'can not be empty','min_length':'password length needd > 6','max_length': 'password lenght must  < 16'})
-    newPassword = forms.CharField(widget=forms.PasswordInput(),label="old password:",min_length=6,max_length=16,required=True,strip=True,
+    newPassword = forms.CharField(widget=forms.PasswordInput(),label="新密码:",min_length=6,max_length=16,required=True,strip=True,
                                   error_messages={'required': 'can not be empty','min_length':'password length needd > 6','max_length': 'password lenght must  < 16'})
-    confirmPassword = forms.CharField(widget=forms.PasswordInput(),label="old password:",min_length=6,max_length=16,required=True,strip=True,
+    confirmPassword = forms.CharField(widget=forms.PasswordInput(),label="密码确认:",min_length=6,max_length=16,required=True,strip=True,
                                   error_messages={'required': 'can not be empty','min_length':'password length needd > 6','max_length': 'password lenght must  < 16'})

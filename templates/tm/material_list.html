@@ -8,12 +8,13 @@
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
-
+    <link rel="stylesheet" type="text/css" href="{% static "other.css" %}" />
 {% block content %}
+
 <div id="content-main">
-{% if object_list  %}
-    <table>
-    <caption>{% trans 'All Materials' %}</caption>
+
+    <table class="module">
+    <caption class="module" >{% trans 'All Materials' %}</caption>
           <tr class="model-{{ model.object_name|lower }}">
             <th scope="row">{% trans 'Id' %}</th>
             <th scope="row">{% trans 'Material Name' %}</th>
@@ -22,6 +23,7 @@
             <th scope="row">{% trans 'Num' %}</th>
               <th scope="row">{% trans 'IsOverflow' %}</th>
         </tr>
+    {% if object_list  %}
     {% for material in object_list  %}
         <tr class="model-{{ model.object_name|lower }}">
             <td scope="row">{{ material.id }}</td>
@@ -33,11 +35,25 @@
             {% else %}
                 <td scope="row">0</td>
             {% endif %}
-            <td scope="row">{{ material.isOverflow }}</td>
+        {% if material.isOverflow %}
+            <td scope="row">{% trans 'Yes' %}  </td>
+        {% else %}
+             <td scope="row">{% trans 'No' %}</td>
+        {% endif %}
              <td><a href="/materialStorage/add/?mid={{ material.id }}" class="addlink">{% trans 'Add' %}</a></td>
         </tr>
-    {% endfor %}
+        {% endfor %}
+        {% else %}
+        <tr class="model-{{ model.object_name|lower }}">
+            <td scope="row">{{ "-"}}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+         <td scope="row">{{ "-" }}</td>
+        </tr>
+    {% endif %}
     </table>
-{% endif %}
+
 </div>
 {% endblock %}

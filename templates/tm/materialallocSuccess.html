@@ -8,7 +8,7 @@
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
-
+<link rel="stylesheet" type="text/css" href="{% static "other.css" %}" />
 {% block content %}
 <div id="content-main">
     <label style="font-size: 22px;color: green">{% trans ' Material:' %}{{ material.Name }} {% trans 'add' %} {{ num }} {% trans 'success' %}</label>

@@ -10,18 +10,21 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static "other.css" %}" />
 <div id="content-main">
-{% if object_list  %}
-    <table>
+
+    <table class="module"  style="white-space: nowrap">
+
     <caption>{% trans 'All Materials' %}</caption>
           <tr class="model-{{ model.object_name|lower }}">
             <th scope="row">{% trans 'Id' %} </th>
-            <th scope="row">{% trans 'Material Name' %} </th>
+            <th scope="row">{% trans '班级' %} </th>
             <th scope="row">{% trans 'Student of Num' %}</th>
             <th scope="row">{% trans 'Allocated Num of Materials' %}</th>
             <th scope="row">{% trans 'Total of Material Num' %}</th>
               <th scope="row">{% trans 'isAllocateAll' %}</th>
         </tr>
+    {% if object_list  %}
     {% for grade in object_list  %}
         <tr class="model-{{ model.object_name|lower }}">
             <td scope="row">{{ grade.id }}</td>
@@ -35,7 +38,17 @@
             {% endif %}
         </tr>
     {% endfor %}
+    {% else %}
+         <tr class="model-{{ "-" }}">
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td>
+            <td scope="row">{{ "-" }}</td
+        </tr>
+    {% endif %}
     </table>
-{% endif %}
+
 </div>
 {% endblock %}

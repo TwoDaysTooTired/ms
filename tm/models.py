@@ -43,7 +43,7 @@ class Grade(models.Model):
         return self.Name
     def studentNum(self):
         return  self.studentinfo_set.count()
-    studentNum.short_description = "Num of Student"
+    studentNum.short_description = "学生数"
     class Meta:
         verbose_name = '班级'
         verbose_name_plural = '班级'
@@ -68,7 +68,7 @@ class Grade(models.Model):
         studentNum = self.studentNum()
         for material in self.materials():
             material.InventoryNum -= studentNum
-            MaterialAllocModel.objects.create(Material=material,Num=studentNum)
+            MaterialAllocModel.objects.create(Material=material,Num=studentNum,GradeName=self.Name)
             self.hasAllocNum += studentNum
             material.save()
         self.save()
@@ -78,7 +78,7 @@ class Grade(models.Model):
 class StudentInfo(models.Model):
     Name = models.CharField("姓名",max_length=15)
     SerialNum = models.CharField("学号",max_length=10,unique=True)
-    Gender = models.PositiveSmallIntegerField("性别",choices=((0,"female"),(1,"male")),null=True,blank=True)
+    Gender = models.PositiveSmallIntegerField("性别",choices=((0,"女性"),(1,"男性")),null=True,blank=True)
     Age = models.PositiveSmallIntegerField("年龄",null=True,blank=True)
     ElectiveCourses = models.ManyToManyField(Course,verbose_name="选修课")
     Email = models.EmailField("邮箱",blank=True,null=True)
@@ -99,6 +99,7 @@ class StudentInfo(models.Model):
     def electiveCoursesNum(self):
         return self.ElectiveCourses.count()
 
+    electiveCoursesNum.short_description = "选修课数量"
     @staticmethod
     def createStudentUser(self):
         if  User.objects.filter(username=self.SerialNum).count() == 0 :
@@ -123,6 +124,7 @@ class MaterialAllocModel(models.Model):
     Num = models.PositiveSmallIntegerField('数量')
     Material = models.ForeignKey(Material,verbose_name='材料',on_delete=models.CASCADE,blank=False)
     Data = models.DateTimeField('日期时间', auto_now_add=True)
+    GradeName = models.CharField(verbose_name='班级',blank=False,max_length=200,default="-")
     Note = models.CharField('备注', max_length=200, blank=True, null=True)
     class Meta:
         verbose_name = '材料分配记录'
