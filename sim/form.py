@@ -21,3 +21,4 @@ class PasswordChangeForm(forms.Form):
                                   error_messages={'required': 'can not be empty','min_length':'password length needd > 6','max_length': 'password lenght must  < 16'})
     confirmPassword = forms.CharField(widget=forms.PasswordInput(),label="密码确认:",min_length=6,max_length=16,required=True,strip=True,
                                   error_messages={'required': 'can not be empty','min_length':'password length needd > 6','max_length': 'password lenght must  < 16'})
+

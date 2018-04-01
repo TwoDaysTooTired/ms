@@ -21,6 +21,7 @@ from django.urls import include
 from sim.views import loginSuccess, detailInfo,changeInfo,changePassword,choseCources,materailsDetail,materailAdd
 from tm.views import MaterialListView, materialStorage,GradeListView,allocMaterial, MaterialEntryListView,MaterialOutBoundListView
 from django.contrib.admin import models
+from tm.views import materialAlloc,allocdetail
 
 
 urlpatterns = [
@@ -39,8 +40,10 @@ urlpatterns = [
     path(r'materialStorage/detail/',MaterialListView.as_view(), name = 'material_list'),
     path(r'materialStorage/add/', materialStorage),
     #材料分配
+    path(r'materialAlloc/info/', materialAlloc, name='materialAlloc'),
     path(r'materialAlloc/detail/',GradeListView.as_view(), name = 'grade_list'),
     path(r'materialAlloc/alloc/',allocMaterial),
+    path(r'allocdetail/', allocdetail),
     #出入库记录
     path(r'materialRecord/entry/', MaterialEntryListView.as_view(),  name='materialstoragemodel_list'),
     path(r'materialRecord/out/', MaterialOutBoundListView.as_view(), name='materialallocmodel_list')

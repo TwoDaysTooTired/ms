@@ -1,0 +1,142 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+<link rel="stylesheet" type="text/css" href="{% static "other.css" %}" />
+{% block content %}
+<div id="content-main">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="{% static "js/jquery.cxselect.js" %}"></script>
+<script>
+    $.ajaxSetup({
+    data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+});
+</script>
+<form id= "form" action="materialAlloc/info/" method="post">{% csrf_token %}
+    <table class="module" style="width: auto">
+    <caption class="section">
+        <label style="font-size: 22px;color: green">{% trans 'Add inventory to  Material :' %}{{ material.Name }}</label>
+    </caption>
+    {{ form.non_field_errors }}
+        {{ form }}
+
+{% load other %}
+{{cascade_select_list|cascade_select}}
+        <script type="text/javascript">
+            jQuery('#form').on('change',function (e) {
+                if(e.target && e.target.id == "id_Students") {
+                    target = e.target
+                    a = ""
+                    var id_list = []
+                    for (var i = 0; i < target.length; i++) {
+                        if (target.options[i].selected == true) {
+                            a += target.options[i].text
+                            id_list.push(target.options[i].text)
+                        }
+                    }
+                    jQuery.ajaxSetup({
+                        data: {csrfmiddlewaretoken: '{{ csrf_token }}'}
+                    })
+                    jQuery.ajax({
+                        url: "/allocdetail/",
+                        type: "GET",
+                        data: {"id_list": JSON.stringify(id_list)},
+                        success: function (res) {
+                            ndata = res.n
+                            sdata = res.s
+                            vdata = res.v
+                            type = typeof(ndata)
+                            isArray = ndata.toString()
+                            data = JSON.stringify(res);
+                            var lists = []
+
+                            for(key in ndata)
+                            {
+                                data = {}
+                                data.name = key
+                                data.remainCount = sdata[key]
+                                data.needCount = ndata[key]
+                                data.isEnough = vdata[key]
+                                lists.push(data)
+                            }
+                            tableParent = jQuery('#alloc_detail')
+                            tableParent.empty()
+                            var table=jQuery("<table border=\"1\"> </table>");
+                            table.appendTo(tableParent)
+                            var caption = jQuery("<caption>detail info </caption>")
+                            var th1 = jQuery("<th>材料名</th>")
+                            var th2 = jQuery("<th>库存数量</th>")
+                            var th3 = jQuery("<th>分配数量</th>")
+                            caption.appendTo(table)
+                            th1.appendTo(table)
+                            th2.appendTo(table)
+                            th3.appendTo(table)
+                            for(var i =0; i <lists.length; ++i)
+                            {
+                                var $trTemp = jQuery("<tr></tr>");
+                                var td1 = jQuery("<td>"+ lists[i].name +"</td>")
+                                var td2 = jQuery("<td>"+ lists[i].remainCount +"</td>")
+                                var td3 = jQuery( lists[i].isEnough == 1 ? ("<td>"+ lists[i].needCount +"</td>") : ("<td  font-color='red'>"+ lists[i].needCount +"</td>"))
+                                //往行里面追加 td单元格
+                                $trTemp.append(td1);
+                                $trTemp.append(td2);
+                                $trTemp.append(td3)
+                                table.append($trTemp)
+                            }
+                        }
+                    })
+                }
+})
+</script>
+    </table>
+     <div id = "alloc_detail"></div>
+     <p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="update"  /></p>
+</form>
+</div>
+{% endblock %}
+
+
+{#<div class="fieldWrapper">#}
+{#    {{ form.Grade.errors }}#}
+{#    <label for="{{ form.Grade.id_for_label }}">班级:</label>#}
+{#    {{ form.Grade }}#}
+{#</div>#}
+{#<div class="fieldWrapper">#}
+{#    {{ form.Students.errors }}#}
+{#    <label for="{{ form.Students.id_for_label }}">学生:</label>#}
+{#    {{ form.Students }}#}
+{#</div>#}
+{#<div class="fieldWrapper">#}
+{#    {{ form.Note.errors }}#}
+{#    <label for="{{ form.Note.id_for_label }}">Your email address:</label>#}
+{#    {{ form.Note }}#}
+{#</div>#}
+
+
+{#            jQuery(document).on('ready',function () {#}
+{#                event_element = MochiKit.DOM.getElement('id_Students')#}
+{#MochiKit.Signal.connect(event_element, "onchange", function (obj) {#}
+{##}
+{#    target = obj.target()#}
+{#    a = ""#}
+{#    var id_list = []#}
+{#    for (var i = 0; i < target.length; i++) {#}
+{#        if (target.options[i].selected == true) {#}
+{#            a += target.options[i].text#}
+{#            id_list[i] = target.options[i].text#}
+{#        }#}
+{#    }#}
+{#    jQuery.ajaxSetup({#}
+{#        data: {csrfmiddlewaretoken: '{{ csrf_token }}' }})#}
+{#    jQuery.ajax({url:"/allocdetail/", type:"GET", data:JSON.stringify(id_list),success:function (res) {#}
+{#            alert(res)#}
+{#        }})#}
+{#            })#}
+    {#detialNode = MochiKit.DOM.getElement('alloc_detail')#}
+    {#detialNode.target().empty()#}

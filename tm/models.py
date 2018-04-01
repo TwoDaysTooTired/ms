@@ -54,6 +54,7 @@ class Grade(models.Model):
             for materail in course.Materials.all():
                 material_list.append(materail)
         return material_list
+
     def isEnoughN(self):
         for material in self.materials():
             if material.InventoryNum < self.studentNum():
@@ -85,6 +86,8 @@ class StudentInfo(models.Model):
     Tel = models.CharField("电话号码",max_length=13,blank=True,null=True)
     Grade = models.ForeignKey(Grade,verbose_name="班级",on_delete=models.SET_NULL,blank=True,null=True)
     Note = models.CharField("备注",max_length=200,null=True, blank=True)
+    isAlloc = models.BooleanField("是否分配",default=False)
+    AllocMaterial = models.ManyToManyField(Material,verbose_name="已分配的材料",blank=True)
     actionDetail = '/student/detail/'
     actionChangeInfo = "/student/change/"
     actionChangePassword = '/changePassword/'
@@ -98,6 +101,36 @@ class StudentInfo(models.Model):
 
     def electiveCoursesNum(self):
         return self.ElectiveCourses.count()
+
+    def allMaterial(self):
+        materials = []
+        for course in self.ElectiveCourses.all():
+            for material in course.Materials.all():
+                materials.append(material)
+        materials += self.Grade.materials()
+        ##去重
+        result = list(set(materials))
+        return result
+
+    def electiveCoursesMaterials(self):
+        materials = []
+        for course in self.ElectiveCourses.all():
+            for material in course.Materials.all():
+                materials.append(material)
+        result = list(set(materials))
+        return result
+    
+    def isAllocAll(self):
+        return self.AllocMaterial.all().count() == self.allMaterial().count()
+
+    def allocMaterial(self,material_list):
+        for material in material_list:
+            self.AllocMaterial.add(material)
+        if self.isAllocAll():
+            self.isAlloc = True
+        self.save()
+
+
 
     electiveCoursesNum.short_description = "选修课数量"
     @staticmethod
