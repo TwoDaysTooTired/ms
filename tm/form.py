@@ -8,13 +8,12 @@ class MaterialStorageForm(forms.Form):
 
 
 class MaterialAllocForm(forms.Form):
-    def __init__(self,studentsChocies = None, *args,**kwargs):
-        super(MaterialAllocForm, self).__init__(*args,**kwargs)
-        if studentsChocies:
-            self.fields['Students'] = forms.ModelMultipleChoiceField(label="学生",queryset= studentsChocies)
+    # def __init__(self,studentsChocies = None, *args,**kwargs):
+    #     super(MaterialAllocForm, self).__init__(*args,**kwargs)
+    #     if studentsChocies:
+    #         self.fields['Students'] = forms.ModelMultipleChoiceField(label="学生",queryset= studentsChocies)
 
     Grade = forms.ModelChoiceField(label="班级",queryset = Grade.objects.all())
     Students = forms.ModelMultipleChoiceField(label="学生",queryset= StudentInfo.objects.all())
-    Note = forms.CharField(label="备注", required=False, max_length=200)
 
 

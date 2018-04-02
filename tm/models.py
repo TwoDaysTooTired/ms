@@ -123,13 +123,15 @@ class StudentInfo(models.Model):
     def isAllocAll(self):
         return self.AllocMaterial.all().count() == self.allMaterial().count()
 
-    def allocMaterial(self,material_list):
+    def alloc_material(self):
+        material_list = self.allMaterial()
         for material in material_list:
+            material.InventoryNum -=1
             self.AllocMaterial.add(material)
+            material.save()
         if self.isAllocAll():
             self.isAlloc = True
         self.save()
-
 
 
     electiveCoursesNum.short_description = "选修课数量"
